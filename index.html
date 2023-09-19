@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube Scrambler</title>
+    <link rel="icon" href="Rubiks_Cube.png">
+</head>
+<body>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script> 
+    <center>
+        <h1 id="site-scramble">Press Generate.</h1>
+        <button py-click="random_scramble()" class="py-button">Generate</button>
+        <py-script>
+            import random
+
+            moves = [
+                "F", "F\'", "F2", "f", "f\'", "f2",
+                "B", "B\'", "B2", "b", "b\'", "b2",
+                "L", "L\'", "L2", "l", "l\'", "l2",
+                "R", "R\'", "R2", "r", "r\'", "r2",
+                "U", "U\'", "U2", "u", "u\'", "u2",
+                "D", "D\'", "D2", "d", "d\'", "d2",
+                "M", "M\'", "M2",
+                "E", "E\'", "E2",
+                "S", "S\'", "S2",
+                "F", "F\'", "F2",
+                "B", "B\'", "B2",
+                "L", "L\'", "L2",
+                "R", "R\'", "R2",
+                "U", "U\'", "U2",
+                "D", "D\'", "D2",
+                ]
+
+            def random_scramble():
+                i = 20
+                scramble = ""
+                while i > 1:
+                    last_index = 0
+                    index = random.randint(0,56)
+                    if last_index == index:
+                        last_index = index
+                        index = random.randint(0,56)
+                        scramble += " " + moves[index]
+                    else:
+                        last_index = index
+                        scramble += " " + moves[index]
+                    i -= 1
+                header = Element("site-scramble")
+                header.write(scramble)
+
+        </py-script>
+    </center>
+</body>
+</html>
